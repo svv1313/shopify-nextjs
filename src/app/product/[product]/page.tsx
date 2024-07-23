@@ -32,17 +32,12 @@ export default async function ProductPage({ params }: IProps) {
   );
 }
 
-export async function getStaticPaths() {
+export async function generateStaticParams() {
   const products = await getAllProducts();
 
   const paths = products.map((item) => {
-    return {
-      params: { product: item.node.handle },
-    };
+    return { product: item.node.handle };
   });
 
-  return {
-    paths,
-    fallback: false,
-  };
+  return paths;
 }
