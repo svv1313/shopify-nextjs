@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getAllProducts, getProductByHandle } from "../../../../lib/shopify";
+import ProductPageContent from '../../../../components/ProductPageContent';
 
 interface IProps {
   params: {
@@ -15,19 +16,8 @@ export default async function ProductPage({ params }: IProps) {
   }
 
   return (
-    <div className="bg-white">
-      <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-        <div>{product.title}</div>
-        <p>{product.description}</p>
-        <div className="max-w-48 max-h-32">
-          <Image
-            src={product.images.edges[0].node.url}
-            alt={product.images.edges[0].node.altText}
-            width={200}
-            height={200}
-          />
-        </div>
-      </div>
+    <div className="min-h-screen py-12 sm:pt-20">
+      <ProductPageContent product={product} />
     </div>
   );
 }
