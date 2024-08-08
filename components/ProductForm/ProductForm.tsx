@@ -38,12 +38,24 @@ export const ProductForm = ({ product }: IProps) => {
 
   const [selectedVariant, setSelectedVariant] = useState(allVariantOptions[0]);
   const [selectedOptions, setSelectedOptions] = useState(defaultValues);
+  const setOptions = (name: string, value: IOptionValue) => {
+    setSelectedOptions((prevState) => ({ ...prevState, [name]: value }));
+  };
   // TODO: remove hardcoded currency code
   return (<div className='rounded-2xl p-4 shadow-lg flex flex-col w-full md:w-1/3'>
     <h2 className='text-2xl font-bold'>{product.title}</h2>
     <span className='pb-6'>{getFormatter('UAH').format(Number(product.variants.edges[0].node.price.amount))}</span>
     {product.options.map((option) => {
-        return <ProductOption key={`${option.name}`} name={option.name} values={option.optionValues} selectedOption={selectedOptions} />;
+        return (
+          <ProductOption
+            key={`${option.name}`}
+            name={option.name}
+            values={option.optionValues}
+            selectedOption={selectedOptions}
+            setOptions={setOptions}
+          />
+        );
     })}
+    <button className='bg-black rounded-lg text-white px-2 py-3 hover:bg-gray-800'>Add to card</button>
   </div>);
 };

@@ -4,9 +4,15 @@ interface IProps {
   name: string;
   values: IOptionValue[];
   selectedOption: { [key: string]: IOptionValue };
+  setOptions: (name: string, value: IOptionValue) => void;
 }
 
-export const ProductOption = ({ name, values, selectedOption }: IProps) => {
+export const ProductOption = ({
+  name,
+  values,
+  selectedOption,
+  setOptions,
+}: IProps) => {
   return (
     <fieldset>
       <legend className="text-xl font-semibold">{name}</legend>
@@ -23,6 +29,7 @@ export const ProductOption = ({ name, values, selectedOption }: IProps) => {
                 name={`option-${name}`}
                 value={value.id}
                 checked={checked}
+                onChange={() => setOptions(name, value)}
               />
               <div
                 className={`p-2 my-3 text-lg rounded-full block cursor-pointer mr-3 ${
@@ -31,7 +38,7 @@ export const ProductOption = ({ name, values, selectedOption }: IProps) => {
                     : "text-gray-900 bg-gray-200"
                 }`}
               >
-                <span className='px-2'>{value.name}</span>
+                <span className="px-2">{value.name}</span>
               </div>
             </label>
           );
