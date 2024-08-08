@@ -33,8 +33,8 @@ export interface IOption {
 }
 
 export interface IOptionValue {
-    id: string;
-    name: string;
+  id: string;
+  name: string;
 }
 
 export interface IVariant {
