@@ -27,6 +27,7 @@ export interface ISelectedVariant {
   variantQuantity: number;
   productId: string;
   lineId?: string | null;
+  handle: string;
 }
 
 export const ProductForm = ({ product }: IProps) => {
@@ -48,6 +49,7 @@ export const ProductForm = ({ product }: IProps) => {
       variantQuantity: 1,
       productId: product.id,
       lineId: null,
+      handle: product.handle,
     };
   });
 
@@ -78,7 +80,7 @@ export const ProductForm = ({ product }: IProps) => {
   return (
     <div className="rounded-2xl p-4 shadow-lg flex flex-col w-full md:w-1/3">
       <h2 className="text-2xl font-bold">{product.title}</h2>
-      <span className="pb-6">
+      <span className="pb-3">
         {getFormatter(DEFAULT_CURRENCY).format(
           Number(product.variants.edges[0].node.price.amount)
         )}
@@ -95,7 +97,7 @@ export const ProductForm = ({ product }: IProps) => {
         );
       })}
       <button
-        className="bg-black rounded-lg text-white px-2 py-3 hover:bg-gray-800"
+        className="bg-black rounded-lg text-white px-2 py-3 hover:bg-gray-800 mt-3"
         onClick={onAddToCart}
       >
         Add to card

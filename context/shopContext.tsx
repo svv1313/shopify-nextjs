@@ -91,6 +91,10 @@ export const ShopProvider = ({ children }: IProps) => {
     const newCheckout = await removeCheckoutLine(checkoutId, itemToRemove.lineId!);
     setCheckoutUrl(newCheckout.checkoutUrl);
     localStorage.setItem("checkout_id", JSON.stringify([updatedCart, newCheckout]));
+
+    if (updatedCart.length === 0) {
+      setCartOpen(false);
+    }
   };
 
   useEffect(() => {

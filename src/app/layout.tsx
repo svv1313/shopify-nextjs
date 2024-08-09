@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import Layout from '../../components/Layout';
-import { CartContext, ShopProvider } from '../../context/shopContext';
+import { ShopProvider } from '../../context/shopContext';
 
 const inter = Inter({ subsets: ["latin"] });
 
