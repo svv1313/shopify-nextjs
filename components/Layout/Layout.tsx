@@ -1,3 +1,4 @@
+import Footer from '../Footer';
 import Nav from "../Nav";
 
 interface IProps {
@@ -9,9 +10,7 @@ export const Layout = ({ children }: IProps) => {
     <div className="flex flex-col justify-between min-h-min">
       <Nav />
       <main>{children}</main>
-      <footer>
-        Footer
-      </footer>
+      <Footer />
     </div>
   );
 };
