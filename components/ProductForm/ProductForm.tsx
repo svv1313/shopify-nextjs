@@ -9,6 +9,7 @@ import { getFormatter } from "../../utils/numberHelper";
 import ProductOption from "../ProductOption";
 import { createCheckout } from "../../lib/shopify";
 import { useCart } from '../../context/shopContext';
+import { DEFAULT_CURRENCY } from '../../constants';
 
 interface IProps {
   product: IProductDetailed;
@@ -71,12 +72,12 @@ export const ProductForm = ({ product }: IProps) => {
     addToCart(selectedVariant);
   };
   
-  // TODO: remove hardcoded currency code
+
   return (
     <div className="rounded-2xl p-4 shadow-lg flex flex-col w-full md:w-1/3">
       <h2 className="text-2xl font-bold">{product.title}</h2>
       <span className="pb-6">
-        {getFormatter("UAH").format(
+        {getFormatter(DEFAULT_CURRENCY).format(
           Number(product.variants.edges[0].node.price.amount)
         )}
       </span>

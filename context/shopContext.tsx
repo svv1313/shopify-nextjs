@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useEffect, useContext, use } from "react";
 import { createCheckout, createCheckoutLine, updateCheckoutLine } from "../lib/shopify";
 import { ISelectedVariant } from '../components/ProductForm/ProductForm';
 
@@ -64,6 +64,20 @@ export const ShopProvider = ({ children }: IProps) => {
       localStorage.setItem("checkout_id", JSON.stringify([newCart, checkout]));
     }
   };
+
+  useEffect(() => {
+    if (localStorage.checkout_id) {
+      const cartObj = JSON.parse(localStorage.checkout_id);
+      if (cartObj[0].id) {
+        setCart([cartObj[0]]);
+      } else if (cartObj[0].length > 0) {
+        setCart(...[cartObj[0]]);
+      }
+
+      setCheckoutId(cartObj[1].id);
+      setCheckoutUrl(cartObj[1].checkoutUrl);
+    }
+  }, []);
 
   return (
     <CartContext.Provider
