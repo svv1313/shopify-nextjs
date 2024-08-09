@@ -20,7 +20,7 @@ interface IProps {
 
 export const MiniCart = ({ cart }: IProps) => {
   const cancelBtnRef = useRef(null);
-  const { cartOpen, setCartOpen, checkoutUrl } = useCart();
+  const { cartOpen, setCartOpen, checkoutUrl, removeCartItem } = useCart();
 
   let cartTotalPrice = 0;
   cart.map((item) => {
@@ -108,6 +108,7 @@ export const MiniCart = ({ cart }: IProps) => {
                                   <button
                                     type="button"
                                     className="font-medium text-gray-500 hover:text-gray-800"
+                                    onClick={() => removeCartItem(product)}
                                   >
                                     Remove
                                   </button>

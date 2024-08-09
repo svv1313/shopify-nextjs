@@ -26,6 +26,7 @@ export interface ISelectedVariant {
   variantPrice: string;
   variantQuantity: number;
   productId: string;
+  lineId?: string | null;
 }
 
 export const ProductForm = ({ product }: IProps) => {
@@ -46,6 +47,7 @@ export const ProductForm = ({ product }: IProps) => {
       variantPrice: variant.node.price.amount,
       variantQuantity: 1,
       productId: product.id,
+      lineId: null,
     };
   });
 

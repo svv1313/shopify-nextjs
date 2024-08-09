@@ -253,3 +253,21 @@ export const updateCheckoutLine = async (
 
   return checkout;
 };
+
+export const removeCheckoutLine = async (id: string, lineId: string) => {
+  const query = `mutation {
+  cartLinesRemove(cartId: "${id}" lineIds: "${lineId}") {
+    cart {
+      id,
+      checkoutUrl
+    }
+  }
+}`;
+
+  const response = await shopifyData(query);
+  const checkout = response.data.cartLinesRemove.cart
+    ? response.data.cartLinesRemove.cart
+    : null;
+
+  return checkout;
+};
