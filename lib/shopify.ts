@@ -100,6 +100,35 @@ export const getProductByHandle = async (
   const query = `
     {
     product(handle: "${handle}") {
+    	collections(first: 1) {
+      	edges {
+          node {
+            products(first: 5) {
+              edges {
+                node {
+                  priceRange {
+                    maxVariantPrice {
+                      amount
+                      currencyCode
+                    }
+                  }
+                  handle
+                  title
+                  id
+                  images(first: 5) {
+                    edges {
+                      node {
+                        url
+                        altText
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+    	}
       id
       title
       handle

@@ -1,4 +1,4 @@
-import { IEdges, INode } from '.';
+import { IEdges, INode } from ".";
 
 export type IProducts = IEdges<IProduct>;
 
@@ -16,8 +16,8 @@ export interface IProduct {
 }
 
 export interface IImage {
-    url: string;
-    altText: string;
+  url: string;
+  altText: string;
 }
 
 export interface IProductSlug {
@@ -28,8 +28,8 @@ export interface IProductSlug {
 }
 
 export interface IOption {
-    name: string;
-    optionValues: IOptionValue[];
+  name: string;
+  optionValues: IOptionValue[];
 }
 
 export interface IOptionValue {
@@ -38,26 +38,31 @@ export interface IOptionValue {
 }
 
 export interface IVariant {
-    selectedOptions: ISelectedOption[];
-    image: IImage;
-    title: string;
-    id: string;
-    price: {
-        amount: string;
-    };
+  selectedOptions: ISelectedOption[];
+  image: IImage;
+  title: string;
+  id: string;
+  price: {
+    amount: string;
+  };
 }
 
 export interface ISelectedOption {
-    name: string;
-    value: string;
+  name: string;
+  value: string;
 }
 
 export interface IProductDetailed {
-    id: string;
-    title: string;
-    handle: string;
-    description: string;
-    images: IEdges<IImage>;
-    options: IOption[];
-    variants: IEdges<IVariant>;
+  id: string;
+  title: string;
+  handle: string;
+  description: string;
+  images: IEdges<IImage>;
+  options: IOption[];
+  variants: IEdges<IVariant>;
+  collections: IEdges<ICollectionProducts>;
 }
+
+export interface ICollectionProducts {
+  products: IEdges<IProduct>;
+};
