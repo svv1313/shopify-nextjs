@@ -28,7 +28,7 @@ export const ProductSlider = ({ product }: IProps) => {
         pagination={{ clickable: true }}
         className="h-96 rounded-2xl"
         loop={true}
-        style={{ "--swiper-navigation-color": "#000", "--swiper-pagination-color": "#000" }}
+        style={{ "--swiper-navigation-color": "#000", "--swiper-pagination-color": "#000" } as React.CSSProperties}
       >
         {images}
       </Swiper>
